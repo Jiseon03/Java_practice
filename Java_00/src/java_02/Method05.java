@@ -14,8 +14,12 @@ public class Method05 {
 		System.out.println("숫자를 입력하세요  : ");
 		Scanner sc = new Scanner(System.in);
 		int input = sc.nextInt();
+		if(input >= 1) {
+			System.out.println("1부터 "+input+"까지의 합은 " + sum(input)+"입니다");
+		}else {
+			System.out.println("1보다 작은 숫자는 계산할 수 없습니다.");
+		}
 		
-		System.out.println("1부터"+input+"까지의 합은" + sum(input)+"입니다");
 
 	}
 
