@@ -14,10 +14,10 @@ public class Member {
 	private String memberEmail;
 	private String memberPhone;
 	
-	
 	public Member() {
 		
 	}
+	
 	
 	public Member(String memberId, String memberName) {
 		this.memberId = memberId;

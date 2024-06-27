@@ -17,6 +17,13 @@ public class Book {
 	private String isbn;
 	private int page;
 	
+	public Book() {}
+	
+	public Book(String arg1, String arg2) {
+		this.title = arg1;
+		this.author = arg2;
+	}
+	
 	public String bookInfo() {
 		String result = "";
 		result = "====[도서 정보]====" + "\n";

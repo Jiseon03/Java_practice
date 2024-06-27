@@ -21,7 +21,7 @@ public class MemberDrama {
 				System.out.println("회원 2 : "+mem2.getMemberId()+"::"+mem2.getMemberName());
 				System.out.println("회원 3 : "+mem3.getMemberId()+"::"+mem3.getMemberName());
 				System.out.println("회원 4 : "+mem4.getMemberId()+"::"+mem4.getMemberName());
-				System.out.println("회원 5 : "+mem5.getMemberId()+"::"+mem5.getMemberName());
+				System.out.println("회원 5 : "+mem5.getMemberId()+"::"+mem5.getMemberName()); 
 	}
 
 }
