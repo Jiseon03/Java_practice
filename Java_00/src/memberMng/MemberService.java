@@ -33,9 +33,11 @@ public class MemberService {
 				break;
 			case 2:
 				displayMsg("2. 회원 정보 수정");
+				updateMember();
 				break;
 			case 3:
 				displayMsg("3. 회원 정보 삭제");
+				deleteMember();
 				break;
 			case 4:
 				displayMsg("4. 회원 정보 출력(이름)");
@@ -83,29 +85,88 @@ public class MemberService {
 		
 		//회원 정보 입력받기
 		displayMsg("회원 아이디를 입력해 주세요");
-		String memberId = sc.next();
+		member.setMemberId(sc.next());
 		
 		displayMsg("회원 비밀번호");
-		String memberPw = sc.next();
+		member.setMemberPw(sc.next());
 		
 		displayMsg("회원 이름");
-		String memberName = sc.next();
+		member.setMemberName(sc.next());
 		
 		displayMsg("이메일 주소");
-		String email = sc.next();
+		member.setEmail(sc.next());;
 		
 		displayMsg("연락처 정보 : ");
-		String phone = sc.next();
+		member.setPhone(sc.next());
 		
 		//member에 회원 정보 셋팅
-		member.setMemberId(memberId);
-		member.setMemberPw(memberPw);
-		member.setMemberName(memberName);
-		member.setEmail(email);
-		member.setPhone(phone);
+		
 		
 		//셋팅된 member를 List<Member>
 		mDAO.insertMember(member);
+	}
+	
+//	2. 회원 정보 수정	
+	public void updateMember() {
+		
+		List<Member> members = mDAO.findMember();
+		
+		displayMsg("수정할 회원 아이디를 입력해 주세요 : ");
+		String findId = sc.next();
+		
+		boolean flag = false;	
+		
+		for(int i=0;i<members.size();i++) {
+			Member member = members.get(i);
+					
+			if (findId.equals(member.getMemberId())){
+				displayMsg(member.getMemberName()+"님의 정보를 수정해주세요");
+				
+				displayMsg("비밀번호 :");
+				member.setMemberPw(sc.next());
+				
+				displayMsg("이메일 :");
+				member.setEmail(sc.next());
+				
+				displayMsg("연락처 :");
+				member.setPhone(sc.next());
+				
+				flag = true;	
+				break;
+			}
+		}
+
+		if(flag==false) {
+			displayMsg("회원 아이디가 존재하지 않습니다.");
+		}
+		
+	}
+	
+//	3. 회원 정보 삭제
+	public void deleteMember() {
+		
+		List<Member> members = mDAO.findMember();
+		
+		displayMsg("삭제할 회원 아이디를 입력해 주세요");
+		String findId = sc.next();
+		
+		boolean flag = false;	
+		
+		for(int i=0;i<members.size();i++) {
+			Member member = members.get(i);
+			
+			if(findId.equals(member.getMemberId())) {
+				mDAO.deleteMember(member);
+				displayMsg("삭제가 완료되었습니다.");
+				flag = true;
+				break;
+			}
+		}
+		
+		if(flag==false) {
+			displayMsg("회원 아이디가 존재하지 않습니다.");
+		}
+		
 	}
 	
 //	4. 회원 정보 출력	

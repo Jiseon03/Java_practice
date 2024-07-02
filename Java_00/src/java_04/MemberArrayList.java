@@ -33,7 +33,6 @@ public class MemberArrayList {
 			}else {
 				memArr.add(memberName);
 			}
-			
 		}
 		
 		return memArr;
