@@ -82,6 +82,7 @@ public class parkingMng {
 				String number = sc.next();
 
 				int count = 0;
+				
 				for(int i=0;i<parkingSpace.length;i++) {
 					for(int j=0;j<parkingSpace[i].length;j++) {
 						if(number.equals(parkingSpace[i][j])) {
@@ -92,9 +93,8 @@ public class parkingMng {
 							count++;
 						}		
 					}
-					
 				}
-				System.out.print(count);
+				
 				if(count == ROW * COL) {
 					System.out.println("차량이 존재하지 않습니다.");
 				}
