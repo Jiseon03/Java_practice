@@ -103,24 +103,27 @@ public class ParkingService {
 		System.out.println("주차 위치를 입력해주세요 : ");
 		int location = sc.nextInt();
 		String locationStr = String.valueOf(location);
-		
-
-		for(int i=0;i<parkingSpace.length;i++) {
-			for(int j=0;j<parkingSpace[i].length;j++) {
-				
-				if(locationStr.equals(parkingDAO.parkingNum[i][j])) {
+		boolean flag = false;
+		if(parkingDAO.selectParkingSpace(locationStr) == null) {
+			System.out.println("주차된 자리가 아닙니다.");
+			System.out.println("처음부터 다시 시작하세요.");
+		}else {
+			for(int i=0;i<parkingSpace.length;i++) {
+				for(int j=0;j<parkingSpace[i].length;j++) {
 					
-					parkingDAO.deleteParking(i, j);
-					System.out.println("출차 완료");
-					break;
-				} 	
+					if(locationStr.equals(parkingDAO.parkingNum[i][j])) {
+						parkingDAO.deleteParking(i, j);
+						System.out.println("출차 완료");
+						
+						flag = true;
+						break;
+					} 	
+				}
 			}
 		}
 		
-		if (parkingDAO.selectParkingSpace(locationStr) == null) {
-			System.out.println("주차된 자리가 아닙니다.");
-			System.out.println("처음부터 다시 시작하세요.");
-		}	
+		
+			
 		
 
 	}
