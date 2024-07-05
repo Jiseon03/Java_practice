@@ -100,7 +100,7 @@ public class ParkingService {
 	public void outParking() {
 		String[][] parkingSpace = parkingDAO.selectParking();
 		
-		System.out.println("주차 위치를 입력해주세요 : ");
+		System.out.println("출차 위치를 입력해주세요 : ");
 		int location = sc.nextInt();
 		String locationStr = String.valueOf(location);
 		boolean flag = false;
